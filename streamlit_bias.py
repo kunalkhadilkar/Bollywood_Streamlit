@@ -32,8 +32,28 @@ def calculate_MPR(file_name):
 	him_count = word_tokenizer.count('him')
 	she_count = word_tokenizer.count('she')
 	her_count = word_tokenizer.count('her')
-	MPR = (he_count+him_count)/(he_count+him_count+she_count+her_count)
-	st.write('Male Pronoun Ratio is: ',MPR)
+	numerator = (he_count+him_count)
+	denominator = (he_count+him_count+she_count+her_count)
+	if denominator==0:
+		st.write('No male and female pronouns present in file.')
+	else:
+		MPR = numerator/denominator
+		st.write('Male Pronoun Ratio is: ',MPR)
+
+def calculate_MPR_rawtext(corpus_string):
+	word_tokenizer = nltk.word_tokenize(corpus_string)
+	word_tokenizer = [word.lower() for word in word_tokenizer]
+	he_count = word_tokenizer.count('he')
+	him_count = word_tokenizer.count('him')
+	she_count = word_tokenizer.count('she')
+	her_count = word_tokenizer.count('her')
+	numerator = (he_count+him_count)
+	denominator = (he_count+him_count+she_count+her_count)
+	if denominator==0:
+		st.write('No male and female pronouns present in file.')
+	else:
+		MPR = numerator/denominator
+		st.write('Male Pronoun Ratio is: ',MPR)
 
 
 if option=='Calculate Gender Bias':
@@ -48,7 +68,8 @@ if option=='Calculate Gender Bias':
 			uploaded_file = st.file_uploader("Upload Files",type=['.txt','.srt'])
 			if uploaded_file is not None:
 				st.write("Uploaded successfully")
-				calculate_MPR(str(uploaded_file.name))
+				raw_text = str(uploaded_file.read(),"ISO-8859-1")
+				calculate_MPR_rawtext(raw_text)
 		else:
 			movie_option = st.selectbox("Choose a movie:",   ('','Housefull', 'Spectre','American Sniper','Kal Ho Na Ho','Student Of The Year','P.S. I Love You'),format_func=lambda x: 'Select an option' if x == '' else x)
 			if movie_option=='Housefull':
