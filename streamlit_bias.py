@@ -59,7 +59,7 @@ def calculate_MPR_rawtext(corpus_string):
 if option=='Calculate Gender Bias':
 	st.header('Calculate Male Pronoun Ratio')
 	st.write('Male Pronoun Ratio (MPR) can be calculated for any movie transcript. Mathematically it can be expressed as:')
-	st.latex(r'''MPR = \frac{\text{(Occurences of 'he') + (Occurences of 'him')}}{\text{(Occurences of 'he') + (Occurences of 'him') + (Occurences of 'she') + (Occurences of 'her')}}''')
+	st.latex(r'''MPR = \frac{\text{(Occurences of `he') + (Occurences of `him')}}{\text{(Occurences of `he') + (Occurences of `him') + (Occurences of `she') + (Occurences of `her')}}''')
 	st.write('A MPR of 0.5 suggests equal gendered pronoun usage. MPR > 0.5 indicates higher use of male pronouns than female pronouns in the movie dialogs.')
 	expander_2 = st.beta_expander("Try out a live demo")
 	with expander_2:
