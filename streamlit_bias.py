@@ -4,6 +4,8 @@ import streamlit as st
 import pandas as pd
 import nltk
 from PIL import Image
+nltk.download('punkt')
+
 st.title("Fair is Actually Unfair: Uncovering Gender and Racial Bias in Movies")
 st.header("A crowdsourcing effort to collect incidents of gender bias, colorism and misogyny in movies all over the world.")
 
@@ -47,19 +49,19 @@ if option=='Calculate Gender Bias':
 			if uploaded_file is not None:
 				st.write("Uploaded successfully")
 				calculate_MPR(str(uploaded_file.name))
-		elif radio_option=='Calculate MPR for Sample Movies':
-			option = st.selectbox("Choose a movie:",   ('','Housefull', 'Spectre','American Sniper','Kal Ho Na Ho','Student Of The Year','P.S. I Love You'),format_func=lambda x: 'Select an option' if x == '' else x)
-			if option=='Housefull':
+		else:
+			movie_option = st.selectbox("Choose a movie:",   ('','Housefull', 'Spectre','American Sniper','Kal Ho Na Ho','Student Of The Year','P.S. I Love You'),format_func=lambda x: 'Select an option' if x == '' else x)
+			if movie_option=='Housefull':
 				calculate_MPR('Housefull.srt')
-			if option=='Spectre':
+			if movie_option=='Spectre':
 				calculate_MPR('Spectre.srt')
-			if option=='American Sniper':
+			if movie_option=='American Sniper':
 				calculate_MPR('American Sniper.srt')
-			if option=='Kal Ho Na Ho':
+			if movie_option=='Kal Ho Na Ho':
 				calculate_MPR('KalHoNaaHo.srt')
-			if option=='Student Of The Year':
+			if movie_option=='Student Of The Year':
 				calculate_MPR('Student_of_the_year.srt')
-			if option=='P.S. I Love You':
+			if movie_option=='P.S. I Love You':
 				calculate_MPR('PSILoveYou.srt')
 
 	expander_1 = st.beta_expander("Large Scale MPR Research and Insights")
