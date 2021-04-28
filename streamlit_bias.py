@@ -6,7 +6,7 @@ import nltk
 from PIL import Image
 nltk.download('punkt')
 
-st.title("Fair is Actually Unfair: Uncovering Gender and Racial Bias in Movies")
+st.title("An AI-Based Study of Gender Disparities in Popular Indian Films and the Film Industry")
 st.header("A crowdsourcing effort to collect incidents of gender bias, colorism and misogyny in movies all over the world.")
 
 st.sidebar.title("Bias Analysis")
